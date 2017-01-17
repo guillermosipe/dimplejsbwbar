@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>dimplejs - Black-White Bar Chart</title>
+    <script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <!-- bar -->
+    <script src="js/d3.min.js"></script>
+    <script src="js/bar.js"></script>
+    <script src="js/dimple.v2.1.3.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/bar.css" />
+
+  </head>
+
+  <body>
+        <!-- Seccion de Contenido -->
+    <div class="col-xs-10 col-md-10">
+      <svg height="0" width="0">
+        <defs>
+          <pattern id="down-hatch" width="5" height="5" patternUnits="userSpaceOnUse">
+            <line x1="0" x2="20" y1="0" y2="20" class="line"/>
+            <line x1="-2" x2="2" y1="18" y2="22" class="line"/>
+            <line x1="18" x2="22" y1="-2" y2="2" class="line"/>
+          </pattern>
+          <pattern id="up-hatch" width="5" height="5" patternUnits="userSpaceOnUse">
+            <line x1="0" x2="5" y1="5" y2="0" class="line"/>
+          </pattern>
+          <pattern id="vertical-hatch" width="5" height="20" patternUnits="userSpaceOnUse">
+            <line x1="2" x2="2" y1="0" y2="20" class="line"/>
+          </pattern>
+          <pattern id="horizontal-hatch" width="20" height="5" patternUnits="userSpaceOnUse">
+            <line x1="20" x2="0" y1="2" y2="2" class="line"/>
+          </pattern>
+          <pattern id="grid-hatch" width="5" height="5" patternUnits="userSpaceOnUse">
+            <line x1="20" x2="0" y1="2" y2="2" class="line"/>
+            <line x1="2" x2="2" y1="0" y2="20" class="line"/>
+          </pattern>
+          <pattern id="up-hatch-complete" x="0" y="0" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(-30)">
+             <rect x="0" y="0" width="4" height="8" style="stroke:none; fill:#000;" />
+          </pattern>
+          <pattern id="down-hatch-complete" x="0" y="0" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(30)">
+             <rect x="0" y="0" width="4" height="8" style="stroke:none; fill:#000;" />
+          </pattern>
+
+          <pattern id="circle" width="8" height="8" patternUnits="userSpaceOnUse" >
+              <circle cx="3" cy="3" r="3" style="stroke: none; fill: #000" />
+          </pattern>
+          <pattern id="square" width="6" height="6" patternUnits="userSpaceOnUse">
+              <rect x="0" y="0" width="4" height="4"
+                    style="stroke: none; fill: #000;" />
+          </pattern>
+          <pattern id="diamond" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+              <rect x="0" y="0" width="4" height="4"
+                    style="stroke: none; fill: #000;" />
+          </pattern>
+          <pattern id="circle-empty" width="11" height="11" patternUnits="userSpaceOnUse" >
+              <circle cx="4" cy="4" r="4" style="stroke: #000; fill: none;" />
+          </pattern>
+          <pattern id="square-empty" width="8" height="8" patternUnits="userSpaceOnUse">
+              <rect x="0" y="0" width="5" height="5"
+                    style="stroke: #000; fill: none;" />
+          </pattern>
+          <pattern id="diamond-empty" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+              <rect x="0" y="0" width="5" height="5"
+                    style="stroke: #000; fill: none;" />
+          </pattern>
+          <pattern id="white" width="8" height="8" patternUnits="userSpaceOnUse">
+          </pattern>
+          <pattern id="oval" x="0" y="0" width="0.25" height="0.25" patternContentUnits="objectBoundingBox">
+              <circle cx=".125" cy=".125" r="0.08" stroke="none" fill="#000" />
+          </pattern>
+          <pattern id="circle-invert" x="0" y="0" width="10" height="10" patternUnits="userSpaceOnUse">
+             <rect x="0" y="0" width="10" height="10" fill="#000"/>
+             <circle cx="5" cy="5" r="4" fill="white"/>
+          </pattern>
+          <pattern id="triangle" width="10" height="10" patternUnits="userSpaceOnUse">
+            <polygon points="5,0 10,10 0,10" fill='#000' stroke="none"/>
+          </pattern>
+          <pattern id="triangle-empty" width="10" height="10" patternUnits="userSpaceOnUse">
+            <polygon points="5,0 10,10 0,10" fill='none' stroke="#000"/>
+          </pattern>
+
+
+
+        </defs>
+      </svg>
+      <div id='barras_1' style="max-width:750px;"></div>
+    </div>        
+       
+  </body>
+
+  <script type="text/javascript">
+  
+
+  d3.json("data/data.json", function(error, data) {
+        draw_bar(data,"#barras_1");
+    });
+
+  </script>
+</html>

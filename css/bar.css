@@ -1,0 +1,21 @@
+.box,.line {
+  stroke: black;
+  stroke-width: 2px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.vertical_bar_graph {
+  fill: url(#vertical-hatch);
+}
+.grid_bar_graph {
+  fill: url(#grid-hatch);
+}
+.horizontal_bar_graph {
+  fill: url(#horizontal-hatch);
+}
+.down_bar_graph {
+  fill: url(#down-hatch);
+}
+.up_bar_graph {
+  fill: url(#up-hatch);
+}
